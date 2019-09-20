@@ -1,10 +1,18 @@
 import { put, apply } from 'redux-saga/effects';
-import { createPost as createPostAction } from './../../actions';
+import { postsActions } from './../../actions';
 import { api } from '../../../../REST';
 
 export function* createPost ({ payload: post }) {
-    const response = yield apply(api, api.posts.create, [post]);
-    const result = yield apply(response, response.json);
+    try {
+        const response = yield apply(api, api.posts.create, [post]);
+        const { data, message } = yield apply(response, response.json);
 
-    yield put(createPostAction(result.data));
+        if (response.status !== 200) {
+            throw new Error(message);
+        }
+
+        yield put(postsActions.createPost(data));
+    } catch (error) {
+        console.log('createPost worker error', error);
+    }
 }

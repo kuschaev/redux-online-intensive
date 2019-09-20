@@ -10,7 +10,7 @@ import Styles from './styles.m.css';
 import { mockedProfile } from '../../instruments/mockedData';
 
 // Actions
-import { fetchPostsAsync, createPostAsync } from './../../bus/posts/actions';
+import { postsActions } from './../../bus/posts/actions';
 
 // Components
 import { Composer, Catcher, Post } from '../../components';
@@ -22,8 +22,13 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
+    const { fetchPostsAsync, createPostAsync } = postsActions;
+
     return {
-        actions: bindActionCreators({ fetchPostsAsync, createPostAsync }, dispatch),
+        actions: bindActionCreators(
+            { fetchPostsAsync, createPostAsync },
+            dispatch
+        ),
     };
 };
 
