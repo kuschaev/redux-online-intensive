@@ -31,14 +31,9 @@ export const fetchPostsAsync = () => async (dispatch, getState) => {
     dispatch(loadPosts(result.data));
 };
 
-export const createPostAsync = (post) => async (dispatch, getState) => {
-    dispatch({
+export const createPostAsync = (post) => {
+    return {
         type:    CREATE_POST_ASYNC,
         payload: post,
-    });
-
-    const response = await api.posts.create(post);
-    const result = await response.json();
-
-    dispatch(createPost(result.data));
+    };
 };
