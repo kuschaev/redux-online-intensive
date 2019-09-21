@@ -1,5 +1,4 @@
 import { types } from './types';
-import { api } from './../../REST/api';
 
 export const postsActions = {
     loadPosts: (posts) => {
@@ -16,15 +15,10 @@ export const postsActions = {
         };
     },
 
-    fetchPostsAsync: () => async (dispatch, getState) => {
-        dispatch({
+    fetchPostsAsync: () => {
+        return {
             type: types.FETCH_POSTS_ASYNC,
-        });
-
-        const response = await api.posts.fetch();
-        const result = await response.json();
-
-        dispatch(postsActions.loadPosts(result.data));
+        };
     },
 
     createPostAsync: (post) => {
