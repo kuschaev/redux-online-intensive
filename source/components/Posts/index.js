@@ -17,7 +17,8 @@ import { Composer, Catcher, Post } from '../../components';
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts,
+        posts:   state.posts,
+        profile: state.profile,
     };
 };
 
@@ -37,10 +38,6 @@ const mapDispatchToProps = (dispatch) => {
     mapDispatchToProps
 )
 export default class Posts extends Component {
-    static defaultProps = {
-        // State
-        profile: mockedProfile,
-    };
 
     componentDidMount () {
         const { actions } = this.props;
