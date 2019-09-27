@@ -14,4 +14,10 @@ export const authActions = {
             payload: userData,
         };
     },
+    loginAsync: (loginData) => {
+        return {
+            type:    types.LOGIN_ASYNC,
+            payload: loginData,
+        };
+    },
 };

@@ -9,7 +9,7 @@ import { customThunk } from './custom';
 
 const logger = createLogger({
     duration:  true,
-    collapsed: false,
+    collapsed: true,
     colors:    {
         title:     () => '#139BFE',
         prevState: () => '#1C5FAF',

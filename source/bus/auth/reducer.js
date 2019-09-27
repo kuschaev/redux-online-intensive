@@ -15,6 +15,9 @@ export const authReducer = (state = initialState, action) => {
         case types.SIGNUP_ASYNC:
             return state;
 
+        case types.LOGIN_ASYNC:
+            return state;
+
         default:
             return state;
     }
